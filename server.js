@@ -2,9 +2,17 @@ const express = require("express");
 const http = require("http");
 const app = express();
 const server = http.createServer(app);
+var whitelist = ["http://localhost:3000", "https://webrtcfront.vercel.app"];
+
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://webrtcfront-1xsbwuqgw-saurabharyan30.vercel.app",
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST"],
   },
 });
