@@ -4,7 +4,7 @@ const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://webrtcfront-1xsbwuqgw-saurabharyan30.vercel.app",
     methods: ["GET", "POST"],
   },
 });
@@ -29,4 +29,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(8000, () => console.log("server is running on port 5000"));
+server.listen(8000, () => console.log("server is running on port 8000"));
