@@ -38,4 +38,10 @@ io.on("connection", (socket) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send(
+    `<h1 style="color: green;">Welcome to floorplanbazaar REST APIs</h1>`
+  );
+});
+
 server.listen(8000, () => console.log("server is running on port 8000"));
